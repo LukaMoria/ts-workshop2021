@@ -25,3 +25,25 @@ const sendUpdates = (emailAddr: string | Array<string>) => {
         }
     }
 }
+
+interface Account {
+  firstName: string
+  secondName: string
+  age: number
+  getName: unknown
+}
+
+const account: Account = {
+  firstName: 'Nik',
+  age: 24,
+  secondName: 'Rostov',
+  getName() {
+    return this.firstName + this.secondName
+  }
+}
+
+const userMessage = ([start, end]: TemplateStringsArray, {firstName: name }: typeof account) => {
+    return `${start}${name}${end}`
+}
+
+console.log(userMessage`Hello ${account} !!!`)
